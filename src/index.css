@@ -2,45 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Nom Sum Custom Styles */
-.bg-cream-50 {
-  background-color: #fefce8;
+/* Force dark theme */
+body {
+  background-color: #000000 !important;
 }
 
-.bg-cream-100 {
-  background-color: #fef3c7;
+html {
+  background-color: #000000 !important;
 }
 
-.bg-cream-200 {
-  background-color: #fde68a;
+#root {
+  background-color: #000000 !important;
 }
 
-.border-cream-200 {
-  border-color: #fde68a;
+/* City Gleam Custom Styles */
+.bg-city-gleam-light {
+  background-color: #fef7ed;
 }
 
-.border-cream-300 {
-  border-color: #fcd34d;
+.bg-city-gleam-accent {
+  background-color: #ffedd5;
 }
 
-.hover\:bg-cream-50:hover {
-  background-color: #fefce8;
+.bg-city-gleam-warm {
+  background-color: #fed7aa;
 }
 
-.hover\:bg-cream-100:hover {
-  background-color: #fef3c7;
+.border-city-gleam-light {
+  border-color: #fed7aa;
 }
 
-.hover\:bg-cream-200:hover {
-  background-color: #fde68a;
+.border-city-gleam-medium {
+  border-color: #fdba74;
 }
 
-.hover\:border-cream-400:hover {
-  border-color: #fbbf24;
+.hover\:bg-city-gleam-light:hover {
+  background-color: #fef7ed;
 }
 
-.focus\:ring-cream-500:focus {
-  --tw-ring-color: #f59e0b;
+.hover\:bg-city-gleam-accent:hover {
+  background-color: #ffedd5;
+}
+
+.hover\:bg-city-gleam-warm:hover {
+  background-color: #fed7aa;
+}
+
+.hover\:border-city-gleam-medium:hover {
+  border-color: #fdba74;
+}
+
+.focus\:ring-orange-500:focus {
+  --tw-ring-color: #f97316;
 }
 
 /* Hide scrollbar for mobile nav */

@@ -91,12 +91,12 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
         activeCategory={activeCategory}
         onCategoryClick={handleCategoryClick}
       />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-noto font-semibold text-black mb-4">Our Menu</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Discover our selection of authentic dim sum, flavorful noodles, and traditional Asian dishes, 
-          all prepared with fresh ingredients and authentic techniques.
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-black text-white">
+      <div className="text-center mb-16">
+        <h2 className="text-5xl font-inter font-black text-white mb-6 drop-shadow-lg">Our Menu</h2>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Discover our curated selection of modern cuisine, crafted with premium ingredients 
+          and innovative techniques for the ultimate urban dining experience.
         </p>
       </div>
 
@@ -107,9 +107,11 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
         
         return (
           <section key={category.id} id={category.id} className="mb-16">
-            <div className="flex items-center mb-8">
-              <span className="text-3xl mr-3">{category.icon}</span>
-              <h3 className="text-3xl font-noto font-medium text-black">{category.name}</h3>
+            <div className="flex items-center mb-10">
+              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                <span className="text-2xl text-white">{category.icon}</span>
+              </div>
+              <h3 className="text-3xl font-inter font-bold text-white drop-shadow-lg">{category.name}</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

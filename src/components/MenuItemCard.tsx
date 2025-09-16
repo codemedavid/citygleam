@@ -92,21 +92,20 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
   return (
     <>
-      <div className={`bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group animate-scale-in ${!item.available ? 'opacity-60' : ''}`}>
+      <div className={`bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group animate-scale-in border border-gray-700 hover:border-orange-500 ${!item.available ? 'opacity-60' : ''}`}>
         {item.popular && (
-          <div className="bg-black text-white text-xs font-medium px-3 py-1 rounded-full absolute top-4 right-4 z-10">
-            Popular
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-bold px-4 py-2 rounded-full absolute top-4 right-4 z-10 shadow-lg">
+            ⭐ Popular
           </div>
         )}
         
         {!item.available && (
-          <div className="bg-red-500 text-white text-xs font-medium px-3 py-1 rounded-full absolute top-4 left-4 z-10">
+          <div className="bg-gray-500 text-white text-xs font-bold px-4 py-2 rounded-full absolute top-4 left-4 z-10 shadow-lg">
             Unavailable
           </div>
         )}
         
-        <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-cream-100 to-beige-200 relative">
-        <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-cream-100 to-green-100 relative">
+        <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-gray-800 to-gray-900 relative">
           {item.image ? (
             <img
               src={item.image}
@@ -125,27 +124,26 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
             />
           ) : null}
           <div className={`absolute inset-0 flex items-center justify-center ${item.image ? 'hidden' : ''}`}>
-            <div className="text-6xl opacity-30">☕</div>
+            <div className="text-6xl opacity-20 text-orange-400">🍽️</div>
           </div>
-        </div>
         </div>
         
         <div className="p-6">
-          <h4 className="text-xl font-noto font-medium text-black mb-2">{item.name}</h4>
-          <p className={`text-sm mb-4 leading-relaxed ${!item.available ? 'text-gray-400' : 'text-gray-600'}`}>
+          <h4 className="text-xl font-inter font-bold text-white mb-2">{item.name}</h4>
+          <p className={`text-sm mb-4 leading-relaxed ${!item.available ? 'text-gray-500' : 'text-gray-300'}`}>
             {!item.available ? 'Currently Unavailable' : item.description}
           </p>
           
           <div className="flex items-center justify-between mb-4">
             <div>
-              <span className="text-lg font-semibold text-black">
+              <span className="text-xl font-bold text-orange-400">
                 ₱{item.basePrice}
                 {item.variations && item.variations.length > 0 && (
-                  <span className="text-sm text-gray-500 ml-1">starting</span>
+                  <span className="text-sm text-gray-400 ml-1 font-normal">starting</span>
                 )}
               </span>
               {item.variations && item.variations.length > 0 && (
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-gray-400 mt-1">
                   {item.variations.length} size{item.variations.length > 1 ? 's' : ''} available
                 </div>
               )}
@@ -161,22 +159,22 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
             ) : quantity === 0 ? (
               <button
                 onClick={handleAddToCart}
-                className="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-all duration-200 transform hover:scale-105 font-medium"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-200 transform hover:scale-105 font-semibold shadow-lg hover:shadow-orange-500/25"
               >
                 {item.variations?.length || item.addOns?.length ? 'Customize' : 'Add to Cart'}
               </button>
             ) : (
-              <div className="flex items-center space-x-3 bg-yellow-100 rounded-full p-1">
+              <div className="flex items-center space-x-3 bg-orange-900 rounded-full p-1 border border-orange-700">
                 <button
                   onClick={handleDecrement}
-                  className="p-2 hover:bg-yellow-200 rounded-full transition-colors duration-200"
+                  className="p-2 hover:bg-orange-800 rounded-full transition-colors duration-200 text-orange-400"
                 >
                   <Minus className="h-4 w-4" />
                 </button>
-                <span className="font-semibold text-black min-w-[24px] text-center">{quantity}</span>
+                <span className="font-bold text-white min-w-[24px] text-center">{quantity}</span>
                 <button
                   onClick={handleIncrement}
-                  className="p-2 hover:bg-yellow-200 rounded-full transition-colors duration-200"
+                  className="p-2 hover:bg-orange-800 rounded-full transition-colors duration-200 text-orange-400"
                 >
                   <Plus className="h-4 w-4" />
                 </button>
@@ -185,7 +183,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           </div>
 
           {item.addOns && item.addOns.length > 0 && (
-            <div className="text-xs text-gray-500">
+            <div className="text-xs text-gray-400">
               {item.addOns.length} add-on{item.addOns.length > 1 ? 's' : ''} available
             </div>
           )}
@@ -194,13 +192,13 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
       {/* Customization Modal */}
       {showCustomization && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-red-200 p-6 flex items-center justify-between">
-              <h3 className="text-xl font-noto font-medium text-black">Customize {item.name}</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-700">
+            <div className="sticky top-0 bg-gray-900 border-b border-orange-500 p-6 flex items-center justify-between">
+              <h3 className="text-xl font-inter font-bold text-white">Customize {item.name}</h3>
               <button
                 onClick={() => setShowCustomization(false)}
-                className="p-2 hover:bg-yellow-100 rounded-full transition-colors duration-200"
+                className="p-2 hover:bg-orange-900 rounded-full transition-colors duration-200 text-gray-400 hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -215,7 +213,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                     {item.variations.map((variation) => (
                       <label
                         key={variation.id}
-                        className="flex items-center justify-between p-3 border border-red-300 rounded-lg hover:bg-red-50 cursor-pointer"
+                        className="flex items-center justify-between p-4 border border-orange-600 rounded-xl hover:bg-orange-900/20 cursor-pointer transition-colors duration-200"
                       >
                         <div className="flex items-center space-x-3">
                           <input
@@ -223,11 +221,11 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                             name="variation"
                             checked={selectedVariation?.id === variation.id}
                             onChange={() => setSelectedVariation(variation)}
-                            className="text-red-600 focus:ring-red-500"
+                            className="text-orange-500 focus:ring-orange-500"
                           />
-                          <span className="font-medium text-black">{variation.name}</span>
+                          <span className="font-semibold text-white">{variation.name}</span>
                         </div>
-                        <span className="text-black font-medium">
+                        <span className="text-orange-400 font-bold">
                           ₱{item.basePrice + variation.price}
                         </span>
                       </label>
@@ -249,29 +247,29 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                         {addOns.map((addOn) => (
                           <div
                             key={addOn.id}
-                            className="flex items-center justify-between p-3 border border-red-300 rounded-lg hover:bg-red-50"
+                            className="flex items-center justify-between p-4 border border-orange-600 rounded-xl hover:bg-orange-900/20 transition-colors duration-200"
                           >
                             <div className="flex-1">
-                              <span className="font-medium text-black">{addOn.name}</span>
-                              <div className="text-sm text-gray-600">
+                              <span className="font-semibold text-white">{addOn.name}</span>
+                              <div className="text-sm text-gray-300">
                                 {addOn.price > 0 ? `₱${addOn.price} each` : 'Free'}
                               </div>
                             </div>
                             
                             <div className="flex items-center space-x-2">
                               {selectedAddOns.find(a => a.id === addOn.id) ? (
-                                <div className="flex items-center space-x-2 bg-red-100 rounded-full p-1">
+                                <div className="flex items-center space-x-2 bg-orange-900 rounded-full p-1 border border-orange-700">
                                   <button
                                     type="button"
                                     onClick={() => {
                                       const current = selectedAddOns.find(a => a.id === addOn.id);
                                       updateAddOnQuantity(addOn, (current?.quantity || 1) - 1);
                                     }}
-                                    className="p-1 hover:bg-red-200 rounded-full transition-colors duration-200"
+                                    className="p-1 hover:bg-orange-800 rounded-full transition-colors duration-200 text-orange-400"
                                   >
                                     <Minus className="h-3 w-3" />
                                   </button>
-                                  <span className="font-medium text-black min-w-[20px] text-center text-sm">
+                                  <span className="font-bold text-white min-w-[20px] text-center text-sm">
                                     {selectedAddOns.find(a => a.id === addOn.id)?.quantity || 0}
                                   </span>
                                   <button
@@ -280,7 +278,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                                       const current = selectedAddOns.find(a => a.id === addOn.id);
                                       updateAddOnQuantity(addOn, (current?.quantity || 0) + 1);
                                     }}
-                                    className="p-1 hover:bg-red-200 rounded-full transition-colors duration-200"
+                                    className="p-1 hover:bg-orange-800 rounded-full transition-colors duration-200 text-orange-400"
                                   >
                                     <Plus className="h-3 w-3" />
                                   </button>
@@ -289,7 +287,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                                 <button
                                   type="button"
                                   onClick={() => updateAddOnQuantity(addOn, 1)}
-                                  className="flex items-center space-x-1 px-3 py-1 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200 text-sm"
+                                  className="flex items-center space-x-1 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full hover:from-orange-600 hover:to-orange-700 transition-colors duration-200 text-sm font-semibold"
                                 >
                                   <Plus className="h-3 w-3" />
                                   <span>Add</span>
@@ -305,16 +303,16 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               )}
 
               {/* Price Summary */}
-              <div className="border-t border-red-200 pt-4 mb-6">
-                <div className="flex items-center justify-between text-xl font-noto font-semibold text-black">
+              <div className="border-t border-orange-600 pt-4 mb-6">
+                <div className="flex items-center justify-between text-xl font-inter font-bold text-white">
                   <span>Total:</span>
-                  <span>₱{calculatePrice()}</span>
+                  <span className="text-orange-400">₱{calculatePrice()}</span>
                 </div>
               </div>
 
               <button
                 onClick={handleCustomizedAddToCart}
-                className="w-full bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 transition-colors duration-200 font-medium flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 rounded-xl hover:from-orange-600 hover:to-orange-700 transition-colors duration-200 font-semibold flex items-center justify-center space-x-2 shadow-lg hover:shadow-orange-500/25"
               >
                 <ShoppingCart className="h-4 w-4" />
                 <span>Add to Cart - ₱{calculatePrice()}</span>
